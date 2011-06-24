@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<spring-config>
+
+	<import source="spring-config3.xml"/>
+
+	<beans>
+		<bean id="loaderBean" class="flash.net.URLLoader">
+			<method name="load">
+				<method-arg ref="requestBean"/>
+			</method>
+		</bean>
+
+		<bean id="requestBean" class="flash.net.URLRequest">
+				<constructor-arg><value>http://colorhook.com/services/twitter/statuses/user_timeline/colorhook.xml</value></constructor-arg>
+		</bean>
+	</beans>
+</spring-config>

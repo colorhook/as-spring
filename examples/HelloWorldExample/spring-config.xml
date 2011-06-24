@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<spring-config>
+	<beans>
+		<bean id="textFieldBean" class="flash.text.TextField">
+
+			<property name="text" value="Hello World"/>
+			<property name="width" value="300"/>
+			<property name="x" value="160"/>
+			<property name="y" value="100"/>
+
+			<method name="setTextFormat">
+				<method-arg>
+					<bean class="flash.text.TextFormat">
+						<property name="color" value="0x003366"/>
+						<property name="bold" value="true"/>
+						<property name="size" value="36"/>
+					</bean>
+				</method-arg>
+			</method>
+
+		</bean>
+	</beans>
+</spring-config>
+
+
+<?xml version='1.0' encoding='utf-8'?>
+<response>
+	<!-- avaibale count for current user-->
+	<total>19</total>
+
+	<!--prize type-->
+	<!-- 0 indicate 再抽一次-->
+	<!-- 1 indicate 消费积分-->
+	<!-- 2 indicate 5元-->
+	<!-- 3 indicate 50元-->
+	<!-- 4 indicate 100元-->
+	<!-- 5 indicate iPad -->
+	<prize></prize>
+</response>

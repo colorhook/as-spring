@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<project name="as-spring" basedir="." default="all">
+
+	<!-- Define variables/paths used in this build script -->
+	<property file="build.properties" />
+	<property name="FLEX_HOME" value="${flex-sdk.dir}" />
+
+	<!-- Define tasks used in this build script -->
+	<taskdef resource="flexTasks.tasks" classpath="${flex-sdk.dir}/ant/lib/flexTasks.jar"/>
+
+	<target name="all">
+		<antcall target="clean" />
+		<antcall target="swc" />
+		<antcall target="docs" />
+	</target>
+
+	<target name="clean">
+		<delete includeemptydirs="true" failonerror="false">
+			<fileset dir="${bin.dir}" defaultexcludes="false">
+				<include name="**/*"/>
+			</fileset>
+			<fileset dir="${docs.dir}" defaultexcludes="false">
+				<include name="**/*"/>
+			</fileset>
+		</delete>
+	</target>
+	
+	<!--
+		Generate SWC
+	-->
+	<target name="swc" description="Generates a swc" >
+		<echo>Generating swc using '${src.dir}'...</echo>
+		<compc	output="${bin.dir}/${swc.name}" debug="false">
+			<source-path path-element="${src.dir}" />
+			<include-sources dir="${src.dir}" includes="*"/> 
+		</compc>
+	</target>
+	<!--
+		Generate ASDoc output for the library
+	-->
+	<target name="docs">
+		<echo>Generating documentation for '${docs.dir}'...</echo>
+		<asdoc window-title="${docs.windowtitle}" main-title="${docs.maintitle}" 
+						footer="${docs.footer}" output="${docs.dir}" templates-path="${docs.templates}">
+			<doc-sources path-element="${src.dir}" />
+			<source-path path-element="${src.dir}" />
+			<library-path dir="${flex-sdk.dir}/frameworks/libs" includes="*.swc" append="true" />
+			<library-path dir="${basedir}/libs" includes="*.swc" append="true" />
+		</asdoc>
+	</target>
+
+</project>
