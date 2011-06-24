@@ -21,19 +21,3 @@
 		</bean>
 	</beans>
 </spring-config>
-
-
-<?xml version='1.0' encoding='utf-8'?>
-<response>
-	<!-- avaibale count for current user-->
-	<total>19</total>
-
-	<!--prize type-->
-	<!-- 0 indicate 再抽一次-->
-	<!-- 1 indicate 消费积分-->
-	<!-- 2 indicate 5元-->
-	<!-- 3 indicate 50元-->
-	<!-- 4 indicate 100元-->
-	<!-- 5 indicate iPad -->
-	<prize></prize>
-</response>
