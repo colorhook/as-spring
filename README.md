@@ -1,7 +1,7 @@
 as-spring: ActionScript IOC framework
 =====================================
 
-JPE (JavaScript Physics Engine) is used for games, creative arts or just fun.
+as-spring is an ActionScript IOC framework, used to define and use dynamic objects without re-compile the source code.
 
 Example
 --------------
