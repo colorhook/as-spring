@@ -16,6 +16,10 @@ Example
 		var bean:* = contextLoader.contextInfo.getBean("myBean");
 	}
 
+API Reference
+--------------
+[http://colorhook.github.com/as-spring/]
+
 Licence
 --------------
 as-spring is free to use under MIT license. 
