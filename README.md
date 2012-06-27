@@ -5,16 +5,45 @@ as-spring is an ActionScript IOC framework, used to define and use dynamic objec
 
 Example
 --------------
-	import com.colorhook.spring.context.ContextLoader;
 
-	var contextLoader:ContextLoader = new ContextLoader();
-	contextLoader.addEventListener(Event.COMPLETE, onContextLoaderComplete);
-	contextLoader.load("as-spring.xml");
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<spring-config>
+	<beans>
+		<bean id="textFieldBean" class="flash.text.TextField">
 
-	function onContextLoaderComplete(e){
-		contextLoader.removeEventListener(Event.COMPLETE, onContextLoaderComplete);
-		var bean:* = contextLoader.contextInfo.getBean("myBean");
-	}
+			<property name="text" value="Hello World"/>
+			<property name="width" value="300"/>
+			<property name="x" value="160"/>
+			<property name="y" value="100"/>
+
+			<method name="setTextFormat">
+				<method-arg>
+					<bean class="flash.text.TextFormat">
+						<property name="color" value="0x003366"/>
+						<property name="bold" value="true"/>
+						<property name="size" value="36"/>
+					</bean>
+				</method-arg>
+			</method>
+
+		</bean>
+	</beans>
+</spring-config>
+```
+
+```as
+import com.colorhook.spring.context.ContextLoader;
+
+var contextLoader:ContextLoader = new ContextLoader();
+contextLoader.addEventListener(Event.COMPLETE, onContextLoaderComplete);
+contextLoader.load("as-spring.xml");
+
+function onContextLoaderComplete(e){
+	contextLoader.removeEventListener(Event.COMPLETE, onContextLoaderComplete);
+	var bean:* = contextLoader.contextInfo.getBean("textFieldBean");
+}
+```
 
 API Reference
 --------------
