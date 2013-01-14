@@ -67,12 +67,12 @@ list bean是一个数组对象，用于存放数组结构的数据
 ```xml
 ...
 <list id='myList'>
-  <element value='1'/>
-  <element value='2' type='String'/>
-  <element value='3' type='Date'/>
+  <element value='1' type='int'/>
+  <element value='2'/>
+  <element value='false' type='Boolean'/>
   <list>
-  	<element value='4'>
-  	<element value='5'>
+  	<element value='4'/>
+  	<element value='5'/>
   </list>
 </list>
 ...
@@ -80,7 +80,7 @@ list bean是一个数组对象，用于存放数组结构的数据
 
 ```as
 var list:Array = contextInfo.getBean('myList') as Array;
-trace(list); //
+trace(list); // [1, '2', false, ['4', '5']]
 ```
 
 map bean
@@ -104,7 +104,8 @@ map bean是一个Hash对象，用于存放键值对结构的数据
 
 ```as
 var map:* = contextInfo.getBean('myMap');
-trace(map); //
+trace(map); // {name: 'as-spring', version: '2.x', 
+						//		info: {contributors: '...', github:'http://github.com/colorhook/as-spring'}}
 ```
 
 singleton bean
