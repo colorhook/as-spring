@@ -45,6 +45,131 @@ function onContextLoaderComplete(e){
 }
 ```
 
+element bean
+--------------
+element bean是最简单也是最基础的bean，它代表最基本的数据结构
+
+```xml
+...
+<element id='num' value='200' type='int'/>
+<element id='num2' value='200' type='uint'/>
+<element id='num3' value='200' type='Number'/>
+<element id='str'>string type data</element>
+<element id='arr'>[1,2,3,4]</element>
+<element id='bool'>true</element>
+...
+```
+
+list bean
+--------------
+list bean是一个数组对象，用于存放数组结构的数据
+
+```xml
+...
+<list id='myList'>
+  <element value='1'/>
+  <element value='2' type='String'/>
+  <element value='3' type='Date'/>
+  <list>
+  	<element value='4'>
+  	<element value='5'>
+  </list>
+</list>
+...
+```
+
+```as
+var list:Array = contextInfo.getBean('myList') as Array;
+trace(list); //
+```
+
+map bean
+--------------
+map bean是一个Hash对象，用于存放键值对结构的数据
+
+```xml
+...
+<map id='myMap'>
+  <key name='name' value='as-spring'>
+  <key name='version'>2.x</key>
+  <key name='info'>
+  	<map>
+  		<key name='contributors'>...</key>
+  		<key name='github'>http://github.com/colorhook/as-spring</key>
+  	</map>
+  </key>
+</map>
+...
+```
+
+```as
+var map:* = contextInfo.getBean('myMap');
+trace(map); //
+```
+
+singleton bean
+--------------
+bean可以是singleton类型的，即一个bean只会有单一实例
+
+```xml
+...
+<bean id='sprite' type='flash.display.Sprite' singleton='true'>
+</bean>
+...
+```
+
+```as
+var s1:Sprite = contextInfo.getBean('sprite') as Sprite;
+var s2:Sprite = contextInfo.getBean('sprite') as Sprite;
+trace(s1 === s2); //true
+```
+
+factory bean
+--------------
+factory bean表示一个bean不是通过new关键字创建的，而是通过工厂方法创建的
+
+```as
+package{
+	public class Factory{
+
+		public static function getObject():*{
+			return xxx;
+		}
+	}
+}
+```
+
+```xml
+...
+<bean id='obj' class='Factory' factory-method='getObject'>
+</bean>
+...
+```
+
+```as
+var obj:* = contextInfo.getBean('obj');
+```
+
+通过swf文件反射bean
+--------------
+可以在一个SWF文件中输出class，然后在另一个SWF中通过bean的方式加载使用这个class
+
+```xml
+...
+<classes>
+	<class lib='app.MyClass.swf'/>
+</classes>
+<beans>
+	<bean id='app' class='app.MyClass'/>
+</beans>
+...
+```
+
+```as
+var app:* = contextInfo.getBean('app');
+```
+
+
 API Reference
 --------------
 [http://colorhook.github.com/as-spring/]
