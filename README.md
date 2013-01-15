@@ -158,7 +158,7 @@ var obj:* = contextInfo.getBean('obj');
 ```xml
 ...
 <classes>
-	<class lib='app.MyClass.swf'/>
+	<class name='app.MyClass' lib='app.MyClass.swf'/>
 </classes>
 <beans>
 	<bean id='app' class='app.MyClass'/>
