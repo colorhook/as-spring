@@ -54,9 +54,9 @@ element bean是最简单也是最基础的bean，它代表最基本的数据结�
 <element id='num' value='200' type='int'/>
 <element id='num2' value='200' type='uint'/>
 <element id='num3' value='200' type='Number'/>
-<element id='str'>string type data</element>
-<element id='arr'>[1,2,3,4]</element>
-<element id='bool'>true</element>
+<element id='str'><value>string type data</value></element>
+<element id='arr'><value>[1,2,3,4]</value></element>
+<element id='bool'><value>true</value></element>
 ...
 ```
 
@@ -94,8 +94,13 @@ map bean是一个Hash对象，用于存放键值对结构的数据
   <key name='version'>2.x</key>
   <key name='info'>
   	<map>
-  		<key name='contributors'>...</key>
-  		<key name='github'>http://github.com/colorhook/as-spring</key>
+  		<key name='contributors'>
+			<list>
+			</list>
+		</key>
+  		<key name='github'>
+			<value>http://github.com/colorhook/as-spring</value>
+		</key>
   	</map>
   </key>
 </map>
@@ -105,7 +110,7 @@ map bean是一个Hash对象，用于存放键值对结构的数据
 ```as
 var map:* = contextInfo.getBean('myMap');
 trace(map); // {name: 'as-spring', version: '2.x', 
-						//		info: {contributors: '...', github:'http://github.com/colorhook/as-spring'}}
+			//  info: {contributors: [], github:'http://github.com/colorhook/as-spring'}}
 ```
 
 singleton bean

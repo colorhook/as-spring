@@ -10,7 +10,7 @@ package com.colorhook.spring{
 	 
 	public class Spring{
 	
-		public static const VERSION:String="2.4";
+		public static const VERSION:String="2.5";
 		public static const COPYRIGHT:String="http://colorhook.com";
 
 	}

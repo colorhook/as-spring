@@ -191,7 +191,7 @@
 		private function getElementBeanByXML(item:XML):ElementBean {
 			var bean:ElementBean = new ElementBean;
 			bean.id = XMLUtil.getAttribute(item, SpringConstant.ID);
-			bean.value = XMLUtil.getAttribute(item, SpringConstant.VALUE);
+			bean.value = getValueByXML(item);
 			bean.type = XMLUtil.getAttribute(item, SpringConstant.TYPE);
 			bean.singleton = XMLUtil.getAttribute(item, SpringConstant.SINGLETON) == "true" ;
 			return bean;
